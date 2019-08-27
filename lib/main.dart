@@ -13,14 +13,14 @@ void main() async {
 }
 
 final ThemeData kIOSTheme = ThemeData(
-  primarySwatch: Colors.orange,
-  primaryColor: Colors.grey[100],
+  primarySwatch: Colors.greenAccent[200],
+  primaryColor: Colors.blueGrey[400],
   primaryColorBrightness: Brightness.light,
 );
 
 final ThemeData kDefaultTheme = ThemeData(
-  primarySwatch: Colors.purple,
-  accentColor: Colors.orangeAccent[400],
+  primarySwatch: Colors.blueAccent[200],
+  accentColor: Colors.blueGrey[400],
 );
 
 final googleSignIn = GoogleSignIn();
@@ -82,7 +82,7 @@ class _ChatScreenState extends State<ChatScreen> {
       top: false,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Chat App"),
+          title: Text("Live Chat"),
           centerTitle: true,
           elevation:
               Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
