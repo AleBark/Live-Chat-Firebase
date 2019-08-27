@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
-  Firestore.instance.collection("test").document("test").setData({"test": "test"});
+void main() async {
+
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+final ThemeData iOsTheme = ThemeData(
+  primarySwatch: Colors.orange,
+  primaryColor: Colors.grey[100],
+  primaryColorBrightness: Brightness.light
+);
 
-class _MyAppState extends State<MyApp> {
+final ThemeData defaultTheme = ThemeData(
+    primarySwatch: Colors.purple,
+    primaryColor: Colors.orange[400],
+);
+
+class MyApp extends StatefulWidget {
+
   @override
-  Widget build(BuildContext context) {
-    return Container();
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: 'Live Chat Flutter',
+      debugShowCheckedModeBanner: false,
+    );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return null;
   }
 }
+
