@@ -22,7 +22,7 @@ final ThemeData defaultTheme = ThemeData(
 final googleSignIn = GoogleSignIn();
 final auth = FirebaseAuth.instance;
 
-_ensureLoggedIn() async {
+Future<Null> _ensureLoggedIn() async {
   GoogleSignInAccount user = googleSignIn.currentUser;
 
   if (user == null) {
@@ -30,6 +30,14 @@ _ensureLoggedIn() async {
   }
   if (user == null) {
     user = await googleSignIn.signIn();
+  }
+  //Checking if user is logged on firebase too.
+  if (await auth.currentUser() == null) {
+    GoogleSignInAuthentication credentials =
+        await googleSignIn.currentUser.authentication;
+
+    await auth.signInWithCredential(GoogleAuthProvider.getCredential(
+        idToken: credentials.idToken, accessToken: credentials.accessToken));
   }
 }
 
